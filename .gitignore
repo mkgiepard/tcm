@@ -1,0 +1,45 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+tcm-fe/dist
+tcm-fe//tmp
+tcm-fe//out-tsc
+
+# dependencies
+tcm-be/node_modules
+tcm-fe/node_modules
+
+# profiling files
+tcm-fe/chrome-profiler-events.json
+tcm-fe/speed-measure-plugin.json
+
+# IDEs and editors
+tcm-fe/.idea
+tcm-fe/.project
+tcm-fe/.classpath
+tcm-fe/.c9/
+tcm-fe/*.launch
+tcm-fe/.settings/
+tcm-fe/*.sublime-workspace
+
+# IDE - VSCode
+tcm-fe/.vscode/*
+tcm-fe/!.vscode/settings.json
+tcm-fe/!.vscode/tasks.json
+tcm-fe/!.vscode/launch.json
+tcm-fe/!.vscode/extensions.json
+tcm-fe/.history/*
+
+# misc
+tcm-fe/.sass-cache
+tcm-fe/connect.lock
+tcm-fe/coverage
+tcm-fe/libpeerconnection.log
+tcm-fe/npm-debug.log
+tcm-fe/yarn-error.log
+tcm-fe/testem.log
+tcm-fe/typings
+
+# System Files
+tcm-fe/.DS_Store
+tcm-fe/Thumbs.db
