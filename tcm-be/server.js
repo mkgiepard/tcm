@@ -13,11 +13,11 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Configure mongoose connection
-// mongoose.connect();
-// const connection = mongoose.connection;
-// connection.once('open', () => {
-//     console.log('MongoDB connected!');
-// });
+mongoose.connect('mongodb://localhost:27017/tcm-alpha');
+const connection = mongoose.connection;
+connection.once('open', () => {
+    console.log('MongoDB connected!');
+});
 
 // Attach router
 app.use('/', router);
