@@ -19,6 +19,17 @@ connection.once('open', () => {
     console.log('MongoDB connected!');
 });
 
+// Attach endpoints to the router
+// Get all the testcases from the db
+router.route('/testcases').get((req, res) => {
+    testcase.find((err, testcases) => {
+        if (err)
+            console.log(err);
+        else
+            res.json(testcases);
+    });
+});
+
 // Attach router
 app.use('/', router);
 
