@@ -19,6 +19,7 @@
     "babel-watch": "^7.0.0"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.16.4",
     "mongoose": "^5.4.11"
   }
