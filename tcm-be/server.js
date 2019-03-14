@@ -2,7 +2,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import express from 'express';
 import mongoose from 'mongoose';
-import testcase from './models/testcase';
+import TestCase from './models/testcase';
 
 // Define app and router
 const app = express();
@@ -22,12 +22,31 @@ connection.once('open', () => {
 // Attach endpoints to the router
 // Get all the testcases from the db
 router.route('/testcases').get((req, res) => {
-    testcase.find((err, testcases) => {
+    TestCase.find((err, tcs) => {
         if (err)
             console.log(err);
         else
-            res.json(testcases);
+            res.json(tcs);
     });
+});
+
+// Get one testcase from the db
+router.route('/testcases/:id').get((req, res) => {
+    TestCase.findById(req.params.id, (err, tc) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.json(tc);
+        }
+    });
+});
+
+// Add new testcase to the db
+router.route('/testcases/add').post((req, res) => {
+    let tc = new TestCase(req.body);
+    tc.save()
+      .then(tc => {res.status(200).json({'testcase': 'Added success'});})
+      .catch(err => {res.status(400).send('Failed to add new testcase');})
 });
 
 // Attach router

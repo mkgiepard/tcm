@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema;
 
-let testcase = new Schema({
+let TestCase = new Schema({
     title: {type: String},
     author: {type: String},
     desc: {type: String},
@@ -10,4 +10,4 @@ let testcase = new Schema({
     status: {type: String, default: 'NEW'}
 });
 
-export default mongoose.model('testcase', testcase);
+export default mongoose.model('TestCase', TestCase);
