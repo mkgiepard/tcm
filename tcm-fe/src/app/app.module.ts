@@ -27,10 +27,11 @@ import { MatToolbarModule } from '@angular/material';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    HttpClientModule,
+    HttpClientModule
+  ],
+  providers: [
     TestCaseService
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

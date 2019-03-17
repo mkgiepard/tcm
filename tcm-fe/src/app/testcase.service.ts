@@ -9,11 +9,11 @@ export class TestCaseService {
   constructor(private http: HttpClient) { }
 
   getTestCases() {
-    return this.http.get('${this.uri}/testcases');
+    return this.http.get(`${this.uri}/testcases`);
   }
 
   getTestCaseById(id) {
-    return this.http.get('${this.uri}/testcases/${id}');
+    return this.http.get(`${this.uri}/testcases/${id}`);
   }
 
   addTestCase(title, author, desc, priority) {
@@ -23,7 +23,7 @@ export class TestCaseService {
       desc: desc,
       priority: priority
     }
-    return this.http.post('${this.uri}/testcases/add', testcase);
+    return this.http.post(`${this.uri}/testcases/add`, testcase);
   }
 
   updateTestCase(id, title, author, desc, priority, status) {
@@ -34,10 +34,10 @@ export class TestCaseService {
       priority: priority,
       status: status
     }
-    return this.http.post('${this.uri}/testcases/update/${id}', testcase);
+    return this.http.post(`${this.uri}/testcases/update/${id}`, testcase);
   }
 
   deleteTestCase(id) {
-    return this.http.get('${this.uri}/testcases/delete/${id}');
+    return this.http.get(`${this.uri}/testcases/delete/${id}`);
   }
 }
