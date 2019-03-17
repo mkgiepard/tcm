@@ -3,6 +3,7 @@ import cors from 'cors';
 import express from 'express';
 import mongoose from 'mongoose';
 import TestCase from './models/testcase';
+import { runInNewContext } from 'vm';
 
 // Define app and router
 const app = express();
@@ -47,6 +48,35 @@ router.route('/testcases/add').post((req, res) => {
     tc.save()
       .then(tc => {res.status(200).json({'testcase': 'Added success'});})
       .catch(err => {res.status(400).send('Failed to add new testcase');})
+});
+
+// Update a testcase in the db
+router.route('/testcases/update/:id').post((req, res) => {
+    TestCase.findById(req.params.id, (err, tc) => {
+        if (!tc) {
+            return next(new Error('Could not load document'));
+        } else {
+            tc.title = req.body.title;
+            tc.author = req.body.author;
+            tc.desc = req.body.desc,
+            tc.priority = req.body.priority;
+            tc.status = req.body.status;
+            tc.save()
+              .then(tc => {res.json('Update done');})
+              .catch(err => {res.status(400).send('Update failed');});
+        }
+    });
+});
+
+// Remove a testcase from db
+router.route('/testcases/delete/:id').get((req, res) => {
+    TestCase.findByIdAndRemove({_id: req.params.id}, (err, tc) => {
+        if (err) {
+            res.json(err);
+        } else {
+            res.json('Removed seuccessfully');
+        }
+    });
 });
 
 // Attach router
