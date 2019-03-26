@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TestCaseService } from '../../testcase.service';
 
 @Component({
   selector: 'app-tc-view',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TcViewComponent implements OnInit {
 
-  constructor() { }
+  constructor(private tcService: TestCaseService) { }
 
   ngOnInit() {
+    // Just for testing
+    this.tcService.getTestCases().subscribe((testcases) => {
+      console.log(testcases);
+    });
   }
-
 }
