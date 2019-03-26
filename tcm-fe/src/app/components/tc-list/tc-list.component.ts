@@ -11,6 +11,7 @@ export class TcListComponent implements OnInit {
   constructor(private tcService: TestCaseService) { }
 
   ngOnInit() {
+    // Just for testing
     this.tcService.getTestCases().subscribe((testcases) => {
       console.log(testcases);
     });

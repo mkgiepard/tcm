@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TestCaseService } from '../../testcase.service';
 
 @Component({
   selector: 'app-tc-edit',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TcEditComponent implements OnInit {
 
-  constructor() { }
+  constructor(private tcService: TestCaseService) { }
 
   ngOnInit() {
   }
