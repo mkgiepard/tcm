@@ -12,7 +12,11 @@ import { TcListComponent } from './components/tc-list/tc-list.component';
 
 import { TestCaseService } from './testcase.service';
 
-import { MatToolbarModule } from '@angular/material';
+import { MatToolbarModule, MatFormFieldModule, MatInputModule, 
+  MatOptionModule, MatSelectModule, MatIconModule, MatButtonModule,
+  MatCardModule, MatTableModule, MatDividerModule, MatSnackBarModule, 
+  MatSidenavModule, MatListModule } from '@angular/material';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +31,19 @@ import { MatToolbarModule } from '@angular/material';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    HttpClientModule
+    HttpClientModule,
+    MatFormFieldModule, 
+    MatInputModule, 
+    MatOptionModule, 
+    MatSelectModule,
+    MatIconModule, 
+    MatButtonModule,
+    MatCardModule, 
+    MatTableModule, 
+    MatDividerModule, 
+    MatSnackBarModule, 
+    MatSidenavModule,
+    MatListModule, 
   ],
   providers: [
     TestCaseService
