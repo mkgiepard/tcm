@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { TestCaseService } from '../../testcase.service';
+import { Router } from '@angular/router';
+import { MatTableDataSource } from '@angular/material';
+import { TestCase } from '../../testcase.model';
+
 
 @Component({
   selector: 'app-tc-list',
@@ -7,13 +11,32 @@ import { TestCaseService } from '../../testcase.service';
   styleUrls: ['./tc-list.component.css']
 })
 export class TcListComponent implements OnInit {
-
-  constructor(private tcService: TestCaseService) { }
+  testcases: TestCase[];
+  displayedColumns = ['title', 'author', 'desc', 'priority', 'status', 'actions'];
+  
+  constructor(private tcService: TestCaseService, private router: Router) { }
 
   ngOnInit() {
-    // Just for testing
-    this.tcService.getTestCases().subscribe((testcases) => {
-      console.log(testcases);
+    this.fetchTestCases();
+  }
+
+  fetchTestCases() {
+    this.tcService
+      .getTestCases()
+      .subscribe((data: TestCase[]) => {
+        this.testcases = data;
+        console.log('Data requested...');
+        console.log(this.testcases);
+      });
+  }
+
+  editTestCase(id) {
+    this.router.navigate([`/tc-edit/${id}`]);
+  }
+
+  deleteTestCase(id) {
+    this.tcService.deleteTestCase(id).subscribe(() => {
+      this.fetchTestCases();
     });
   }
 }
