@@ -17,7 +17,7 @@
           <input matInput placeholder="TestCase desc" formControlName="desc" #desc>
         </mat-form-field>
         <mat-form-field class="field-full-width">
-          <mat-select placeholder="TestCase priority" formControlName="priority" #priority>
+          <mat-select placeholder="TestCase priority" formControlName="priority" #priority [value]="testcase.priority">
             <mat-option value="P0">P0</mat-option>
             <mat-option value="P1">P1</mat-option>
             <mat-option value="P2">P2</mat-option>
@@ -26,13 +26,13 @@
           </mat-select>
         </mat-form-field>
         <mat-form-field class="field-full-width">
-            <mat-select placeholder="TestCase status" formControlName="status" #status>
+            <mat-select placeholder="TestCase status" formControlName="status" #status [value]="testcase.status">
               <mat-option value="NEW">NEW</mat-option>
               <mat-option value="PASSED">PASSED</mat-option>
               <mat-option value="FAILED">FAILED</mat-option>
               <mat-option value="BLOCKED">BLOCKED</mat-option>
             </mat-select>
-          </mat-form-field>
+        </mat-form-field>
         <mat-divider></mat-divider>
         <br><br>
         <button mat-raised-button color="accent" routerLink="/tc-list">Back</button>
