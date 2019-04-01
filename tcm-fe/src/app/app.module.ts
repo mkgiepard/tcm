@@ -17,6 +17,8 @@ import { MatToolbarModule, MatFormFieldModule, MatInputModule,
   MatCardModule, MatTableModule, MatDividerModule, MatSnackBarModule, 
   MatSidenavModule, MatListModule } from '@angular/material';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -44,6 +46,7 @@ import { MatToolbarModule, MatFormFieldModule, MatInputModule,
     MatSnackBarModule, 
     MatSidenavModule,
     MatListModule, 
+    ReactiveFormsModule,
   ],
   providers: [
     TestCaseService

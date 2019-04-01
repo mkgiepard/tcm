@@ -1,3 +1,44 @@
-<p>
-  tc-edit works!
-</p>
+<div>
+    <br>
+    <section class="mat-typography">
+      <h3>Edit TestCase</h3>
+    </section>
+    <mat-divider></mat-divider>
+    <br>
+    <mat-card>
+      <form [formGroup]="updateForm" class="update-form">
+        <mat-form-field class="field-full-width">
+          <input matInput placeholder="TestCase title" formControlName="title" #title>
+        </mat-form-field>
+        <mat-form-field class="field-full-width">
+          <input matInput placeholder="TestCase author" formControlName="author" #author>
+        </mat-form-field>
+        <mat-form-field class="field-full-width">
+          <input matInput placeholder="TestCase desc" formControlName="desc" #desc>
+        </mat-form-field>
+        <mat-form-field class="field-full-width">
+          <mat-select placeholder="TestCase priority" formControlName="priority" #priority>
+            <mat-option value="P0">P0</mat-option>
+            <mat-option value="P1">P1</mat-option>
+            <mat-option value="P2">P2</mat-option>
+            <mat-option value="P3">P3</mat-option>
+            <mat-option value="P4">P4</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="field-full-width">
+            <mat-select placeholder="TestCase status" formControlName="status" #status>
+              <mat-option value="NEW">NEW</mat-option>
+              <mat-option value="PASSED">PASSED</mat-option>
+              <mat-option value="FAILED">FAILED</mat-option>
+              <mat-option value="BLOCKED">BLOCKED</mat-option>
+            </mat-select>
+          </mat-form-field>
+        <mat-divider></mat-divider>
+        <br><br>
+        <button mat-raised-button color="accent" routerLink="/tc-list">Back</button>
+        <button type="submit" (click)="updateTestCase(title.value, author.value, desc.value, priority.value, status.value)"
+          [disabled]="updateForm.pristine || updateForm.invalid"
+          mat-raised-button color="primary">Save</button>
+      </form>
+    </mat-card>
+  </div>
