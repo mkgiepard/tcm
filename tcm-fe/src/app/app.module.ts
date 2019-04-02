@@ -18,6 +18,7 @@ import { MatToolbarModule, MatFormFieldModule, MatInputModule,
   MatSidenavModule, MatListModule } from '@angular/material';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     TcCreateComponent,
     TcEditComponent,
     TcViewComponent,
-    TcListComponent
+    TcListComponent,
+    SidenavComponent
   ],
   imports: [
     BrowserModule,
