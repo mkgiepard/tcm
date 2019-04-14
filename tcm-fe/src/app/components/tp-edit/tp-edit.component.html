@@ -1,3 +1,33 @@
-<p>
-  tp-edit works!
-</p>
+<div>
+  <br>
+  <section class="mat-typography">
+    <h3>Edit TestPlan</h3>
+  </section>
+  <mat-divider></mat-divider>
+  <br>
+  <mat-card>
+    <form [formGroup]="updateForm" class="update-form">
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="TestPlan title" formControlName="title" #title>
+      </mat-form-field>
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="TestPlan author" formControlName="author" #author>
+      </mat-form-field>
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="TestPlan desc" formControlName="desc" #desc>
+      </mat-form-field>
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="TestPlan created" formControlName="created" readonly>
+      </mat-form-field>
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="TestPlan updated" formControlName="updated" readonly>
+      </mat-form-field>
+      <mat-divider></mat-divider>
+      <br><br>
+      <button mat-raised-button color="accent" routerLink="/tp-list">Back</button>
+      <button type="submit" (click)="updateTestPlan(title.value, author.value, desc.value)"
+        [disabled]="updateForm.pristine || updateForm.invalid"
+        mat-raised-button color="primary">Save</button>
+    </form>
+  </mat-card>
+</div>
