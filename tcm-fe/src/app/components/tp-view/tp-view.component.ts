@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TestPlanService } from '../../testplan.service';
 
 @Component({
   selector: 'app-tp-view',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TpViewComponent implements OnInit {
 
-  constructor() { }
+  constructor(private tpService: TestPlanService) { }
 
   ngOnInit() {
   }
