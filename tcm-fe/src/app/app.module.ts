@@ -11,6 +11,7 @@ import { TcViewComponent } from './components/tc-view/tc-view.component';
 import { TcListComponent } from './components/tc-list/tc-list.component';
 
 import { TestCaseService } from './testcase.service';
+import { TestPlanService } from './testplan.service';
 
 import { MatToolbarModule, MatFormFieldModule, MatInputModule, 
   MatOptionModule, MatSelectModule, MatIconModule, MatButtonModule,
@@ -59,7 +60,8 @@ import { TpEditComponent } from './components/tp-edit/tp-edit.component';
     ReactiveFormsModule,
   ],
   providers: [
-    TestCaseService
+    TestCaseService,
+    TestPlanService
   ],
   bootstrap: [AppComponent]
 })
