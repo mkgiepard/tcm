@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { formatDate } from "@angular/common";
+
 import { TestPlanService } from '../../testplan.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -32,8 +34,8 @@ export class TpEditComponent implements OnInit {
         this.updateForm.get('title').setValue(this.testplan.title);
         this.updateForm.get('author').setValue(this.testplan.author);
         this.updateForm.get('desc').setValue(this.testplan.desc);
-        this.updateForm.get('created').setValue(this.testplan.created);
-        this.updateForm.get('updated').setValue(this.testplan.updated);
+        this.updateForm.get('created').setValue(formatDate(this.testplan.created, 'yyyy-MM-dd HH:mm', 'en-US'));
+        this.updateForm.get('updated').setValue(formatDate(this.testplan.updated, 'yyyy-MM-dd HH:mm', 'en-US'));
       });
     });
   }
