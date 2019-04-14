@@ -22,6 +22,7 @@ connection.once('open', () => {
 });
 
 // Attach endpoints to the router
+// =================== test case ==============================================
 // Get all the testcases from the db
 router.route('/testcases').get((req, res) => {
     TestCase.find((err, tcs) => {
@@ -47,8 +48,8 @@ router.route('/testcases/:id').get((req, res) => {
 router.route('/testcases/add').post((req, res) => {
     let tc = new TestCase(req.body);
     tc.save()
-      .then(tc => {res.status(200).json({'testcase': 'Added success'});})
-      .catch(err => {res.status(400).send('Failed to add new testcase');})
+      .then(tc => {res.status(200).json({'testcase': 'TestCase create: OK'});})
+      .catch(err => {res.status(400).send('TestCase create: FAIL');})
 });
 
 // Update a testcase in the db
@@ -63,8 +64,8 @@ router.route('/testcases/update/:id').post((req, res) => {
             tc.priority = req.body.priority;
             tc.status = req.body.status;
             tc.save()
-              .then(tc => {res.json('Update done');})
-              .catch(err => {res.status(400).send('Update failed');});
+              .then(tc => {res.json('TestCase update: OK');})
+              .catch(err => {res.status(400).send('TestCase update: FAIL');});
         }
     });
 });
@@ -75,7 +76,68 @@ router.route('/testcases/delete/:id').get((req, res) => {
         if (err) {
             res.json(err);
         } else {
-            res.json('Removed seuccessfully');
+            res.json('TestCase delete: OK');
+        }
+    });
+});
+
+// =================== test plan ==============================================
+// Get all the testplans from the db
+router.route('/testplans').get((req, res) => {
+    TestPlan.find((err, tps) => {
+        if (err)
+            console.log(err);
+        else
+            res.json(tps);
+    });
+});
+
+// Get one testplan from the db
+router.route('/testplans/:id').get((req, res) => {
+    TestPlan.findById(req.params.id, (err, tp) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.json(tp);
+        }
+    });
+});
+
+// Add new testplan to the db
+router.route('/testplans/add').post((req, res) => {
+    let tp = new TestPlan(req.body);
+    let now = Date.now();
+    tp.created = now;
+    tp.updated = now;
+    tp.save()
+      .then(tc => {res.status(200).json({'testplan': 'TestPlan create: OK'});})
+      .catch(err => {res.status(400).send('TestPlan create: FAIL');})
+});
+
+// Update a testplan in the db
+router.route('/testplans/update/:id').post((req, res) => {
+    TestPlan.findById(req.params.id, (err, tp) => {
+        if (!tp) {
+            return next(new Error('Could not load document'));
+        } else {
+            tp.title = req.body.title;
+            tp.author = req.body.author;
+            tp.desc = req.body.desc,
+            tp.updated = Date.now();
+            tp.save()
+              .then(tc => {res.json('TestPlan update: OK');})
+              .catch(err => {res.status(400).send('TestPlan update: FAIL');});
+        }
+    });
+});
+
+// Remove a testplan from db
+router.route('/testplans/delete/:id').get((req, res) => {
+    TestPlan.findByIdAndRemove({_id: req.params.id}, (err, tp) => {
+        if (err) {
+            res.json(err);
+        } else {
+            res.json('TestPlan delete: OK');
         }
     });
 });
