@@ -19,6 +19,10 @@ import { MatToolbarModule, MatFormFieldModule, MatInputModule,
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { TpCreateComponent } from './components/tp-create/tp-create.component';
+import { TpListComponent } from './components/tp-list/tp-list.component';
+import { TpViewComponent } from './components/tp-view/tp-view.component';
+import { TpEditComponent } from './components/tp-edit/tp-edit.component';
 
 
 @NgModule({
@@ -28,7 +32,11 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     TcEditComponent,
     TcViewComponent,
     TcListComponent,
-    SidenavComponent
+    SidenavComponent,
+    TpCreateComponent,
+    TpListComponent,
+    TpViewComponent,
+    TpEditComponent
   ],
   imports: [
     BrowserModule,
