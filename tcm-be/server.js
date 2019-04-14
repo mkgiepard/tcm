@@ -3,6 +3,7 @@ import cors from 'cors';
 import express from 'express';
 import mongoose from 'mongoose';
 import TestCase from './models/testcase';
+import TestPlan from './models/testplan';
 import { runInNewContext } from 'vm';
 
 // Define app and router
