@@ -33,6 +33,7 @@ router.route('/testcases').get((req, res) => {
     });
 });
 
+
 // Get one testcase from the db
 router.route('/testcases/:id').get((req, res) => {
     TestCase.findById(req.params.id, (err, tc) => {
@@ -139,6 +140,18 @@ router.route('/testplans/delete/:id').get((req, res) => {
         } else {
             res.json('TestPlan delete: OK');
         }
+    });
+});
+
+// =================== test plan -- test cases ================================
+// Get all testcases for a testplan with given id from the db
+router.route('/testplans/testcases/:id').get((req, res) => {
+    var query = TestCase.find({testplan_id: req.params.id});
+    query.exec(function (err, tcs) {
+        if (err)
+            console.log(err);
+        else
+            res.json(tcs);
     });
 });
 
