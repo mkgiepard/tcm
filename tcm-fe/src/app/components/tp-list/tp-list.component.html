@@ -10,7 +10,7 @@
     <table mat-table [dataSource]="testplans">
       <ng-container matColumnDef="title">
         <th mat-header-cell *matHeaderCellDef>Title</th>
-        <td mat-cell *matCellDef="let element">{{element.title}}</td>
+        <td mat-cell *matCellDef="let element" (click)="viewTestPlan(element._id)">{{element.title}}</td>
       </ng-container>
       <ng-container matColumnDef="author">
           <th mat-header-cell *matHeaderCellDef>Author</th>

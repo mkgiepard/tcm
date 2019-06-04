@@ -39,4 +39,8 @@ export class TpListComponent implements OnInit {
     });
   }
 
+  viewTestPlan(id) {
+    this.router.navigate([`/tp-view/${id}`]);
+  }
+
 }

@@ -5,4 +5,5 @@ export interface TestCase {
     desc: String,
     priority: String,
     status: String,
+    testplan_id: String,
 }

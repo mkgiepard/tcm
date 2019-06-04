@@ -5,3 +5,11 @@ table {
 .mat-column-right {
     text-align: center;
 }
+
+tr:hover {
+    background-color: lightgrey; 
+}
+
+.mat-column-title:hover {
+    cursor: pointer;
+}

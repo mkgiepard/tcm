@@ -38,4 +38,7 @@ export class TestPlanService {
     return this.http.get(`${this.uri}/testplans/delete/${id}`);
   }
 
+  getTestCasesForTestPlanById(id) {
+    return this.http.get(`${this.uri}/testplans/testcases/${id}`);
+  }
 }
