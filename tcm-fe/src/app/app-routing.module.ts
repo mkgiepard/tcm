@@ -16,10 +16,11 @@ const routes: Routes = [
   {path: 'tp-view/:id', component: TpViewComponent},
   {path: 'tp-list', component: TpListComponent},
   {path: 'tc-create', component: TcCreateComponent},
+  {path: 'tc-create/tp_id/:id', component: TcCreateComponent},
   {path: 'tc-edit/:id', component: TcEditComponent},
   {path: 'tc-view/:id', component: TcViewComponent},
   {path: 'tc-list', component: TcListComponent},
-  {path: '', redirectTo: 'tc-list', pathMatch: 'full'}
+  {path: '', redirectTo: 'tp-list', pathMatch: 'full'}
 ];
 
 @NgModule({
