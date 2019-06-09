@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TestCaseService } from '../../testcase.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -10,10 +10,12 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class TcCreateComponent implements OnInit {
   createForm: FormGroup;
+  tp_id: String;
 
   constructor(private tcService: TestCaseService,
               private fb: FormBuilder,
-              private router: Router) {
+              private router: Router,
+              private route: ActivatedRoute) {
     this.createForm = this.fb.group({
       title: ["", Validators.required],
       author: "",
@@ -23,12 +25,15 @@ export class TcCreateComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.tp_id = params.id;
+    });
   }
 
   addTestCase(title, author, desc, priority) {
-    this.tcService.addTestCase(title, author, desc, priority)
+    this.tcService.addTestCase(title, author, desc, priority, this.tp_id)
                   .subscribe(() => {
-                    this.router.navigate(['/tc-list']);
+                    this.router.navigate(['/tp-view/' + this.tp_id]);
                   });
   }
 

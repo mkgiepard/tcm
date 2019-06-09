@@ -16,12 +16,13 @@ export class TestCaseService {
     return this.http.get(`${this.uri}/testcases/${id}`);
   }
 
-  addTestCase(title, author, desc, priority) {
+  addTestCase(title, author, desc, priority, tp_id) {
     const testcase = {
       title: title,
       author: author,
       desc: desc,
-      priority: priority
+      priority: priority,
+      testplan_id: tp_id
     }
     return this.http.post(`${this.uri}/testcases/add`, testcase);
   }

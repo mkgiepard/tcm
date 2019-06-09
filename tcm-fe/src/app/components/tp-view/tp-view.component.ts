@@ -12,7 +12,7 @@ import { TestCase } from '../../testcase.model';
 })
 export class TpViewComponent implements OnInit {
   tp_id: String;
-  tp: any = {};
+  tp: any = [];
   tcs: TestCase[];
   tpColumns = ['title', 'author', 'desc', 'created', 'updated'];
   tcColumns = ['title', 'author', 'desc', 'priority', 'status'];

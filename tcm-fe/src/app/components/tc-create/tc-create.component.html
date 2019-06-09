@@ -27,7 +27,7 @@
       </mat-form-field>
       <mat-divider></mat-divider>
       <br><br>
-      <button mat-raised-button color="accent" routerLink="/tc-list">Back</button>
+      <button mat-raised-button color="accent" routerLink="/tp-view/{{tp_id}}">Back</button>
       <button type="submit" (click)="addTestCase(title.value, author.value, desc.value, priority.value)"
         [disabled]="createForm.pristine || createForm.invalid"
         mat-raised-button color="primary">Save</button>
