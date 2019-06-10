@@ -64,6 +64,7 @@ router.route('/testcases/update/:id').post((req, res) => {
             tc.desc = req.body.desc,
             tc.priority = req.body.priority;
             tc.status = req.body.status;
+            tc.testplan_id = req.body.testplan_id,
             tc.save()
               .then(tc => {res.json('TestCase update: OK');})
               .catch(err => {res.status(400).send('TestCase update: FAIL');});
