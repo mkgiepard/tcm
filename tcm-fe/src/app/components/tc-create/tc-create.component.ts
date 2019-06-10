@@ -31,6 +31,10 @@ export class TcCreateComponent implements OnInit {
   }
 
   addTestCase(title, author, desc, priority) {
+    if (this.tp_id == null) {
+      console.log("Error: Cannot create a test case without a test plan parent.");
+      return;
+    }
     this.tcService.addTestCase(title, author, desc, priority, this.tp_id)
                   .subscribe(() => {
                     this.router.navigate(['/tp-view/' + this.tp_id]);
