@@ -35,6 +35,7 @@ export class TcEditComponent implements OnInit {
         this.updateForm.get('desc').setValue(this.testcase.desc);
         this.updateForm.get('priority').setValue(this.testcase.priority);
         this.updateForm.get('status').setValue(this.testcase.status);
+        this.updateForm.get('testplan_id').setValue(this.testcase.testplan_id);
       });
     });
   }
@@ -46,14 +47,19 @@ export class TcEditComponent implements OnInit {
       desc: "",
       priority: "",
       status: "",
+      testplan_id: "",
     });
   }
 
   updateTestCase(title, author, desc, priority, status) {
-    this.tcService.updateTestCase(this.id, title, author, desc, priority, status)
+    this.tcService.updateTestCase(this.id, title, author, desc, priority, status, this.testcase.testplan_id)
                   .subscribe(() => {
         this.snackBar.open('TestCase update -- OK', 'OK', { duration:3000 });
-        this.router.navigate(['/tc-list']);
+        this.router.navigate(['/tp-view/' + this.testcase.testplan_id]);
       });
-    }
+  }
+
+  backToTpView() {
+    this.router.navigate(['/tp-view/' + this.testcase.testplan_id]);
+  }
 }

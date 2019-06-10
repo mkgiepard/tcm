@@ -27,13 +27,14 @@ export class TestCaseService {
     return this.http.post(`${this.uri}/testcases/add`, testcase);
   }
 
-  updateTestCase(id, title, author, desc, priority, status) {
+  updateTestCase(id, title, author, desc, priority, status, tp_id) {
     const testcase = {
       title: title,
       author: author,
       desc: desc,
       priority: priority,
-      status: status
+      status: status,
+      testplan_id: tp_id
     }
     return this.http.post(`${this.uri}/testcases/update/${id}`, testcase);
   }

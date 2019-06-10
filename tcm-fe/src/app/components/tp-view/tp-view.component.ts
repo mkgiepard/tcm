@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { MatTableDataSource } from '@angular/material';
 import { TestPlan } from '../../testplan.model';
 import { TestCase } from '../../testcase.model';
+import { TestCaseService } from '../../testcase.service';
 
 @Component({
   selector: 'app-tp-view',
@@ -15,11 +16,12 @@ export class TpViewComponent implements OnInit {
   tp: any = [];
   tcs: TestCase[];
   tpColumns = ['title', 'author', 'desc', 'created', 'updated'];
-  tcColumns = ['title', 'author', 'desc', 'priority', 'status'];
+  tcColumns = ['title', 'author', 'desc', 'priority', 'status', 'actions'];
   
   constructor(private tpService: TestPlanService,
               private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private tcService: TestCaseService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -37,6 +39,16 @@ export class TpViewComponent implements OnInit {
         this.tcs = data;
         console.log(this.tcs);
       });
+  }
+
+  editTestCase(id) {
+    this.router.navigate([`/tc-edit/${id}`]);
+  }
+
+  deleteTestCase(id) {
+    this.tcService.deleteTestCase(id).subscribe(() => {
+      this.fetchTestCases();
+    });
   }
 
 }
