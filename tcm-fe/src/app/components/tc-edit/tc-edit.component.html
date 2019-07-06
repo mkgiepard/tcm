@@ -14,7 +14,7 @@
           <input matInput placeholder="TestCase author" formControlName="author" #author>
         </mat-form-field>
         <mat-form-field class="field-full-width">
-          <input matInput placeholder="TestCase desc" formControlName="desc" #desc>
+          <textarea  matInput placeholder="TestCase desc" formControlName="desc" #desc></textarea>
         </mat-form-field>
         <mat-form-field class="field-full-width">
           <mat-select placeholder="TestCase priority" formControlName="priority" #priority [value]="testcase.priority">
